@@ -1,0 +1,15 @@
+{
+  "name": "simple-package",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A simple package that does nothing.",
+  "keywords": [
+    "some",
+    "keywords"
+  ],
+  "author": "That Guy",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+  }
+}
