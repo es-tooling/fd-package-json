@@ -13,25 +13,43 @@ test('findPackagePath', async (t) => {
   });
 
   await t.test('skips directories named `package.json`', async () => {
-    const fixturePath = joinPath(currentDir, 'test/fixtures/package-json-dir/package.json');
+    const fixturePath = joinPath(
+      currentDir,
+      'test/fixtures/package-json-dir/package.json'
+    );
     assert.equal(await findPackagePath(fixturePath), rootPackagePath);
   });
 
   await t.test('finds package in first dir', async () => {
     const fixturePath = joinPath(currentDir, 'test/fixtures/simple-package');
-    const packagePath = joinPath(currentDir, 'test/fixtures/simple-package/package.json');
+    const packagePath = joinPath(
+      currentDir,
+      'test/fixtures/simple-package/package.json'
+    );
     assert.equal(await findPackagePath(fixturePath), packagePath);
   });
 
   await t.test('finds package in parent dir', async () => {
-    const fixturePath = joinPath(currentDir, 'test/fixtures/simple-package/src');
-    const packagePath = joinPath(currentDir, 'test/fixtures/simple-package/package.json');
+    const fixturePath = joinPath(
+      currentDir,
+      'test/fixtures/simple-package/src'
+    );
+    const packagePath = joinPath(
+      currentDir,
+      'test/fixtures/simple-package/package.json'
+    );
     assert.equal(await findPackagePath(fixturePath), packagePath);
   });
 
   await t.test('finds package in nested package', async () => {
-    const fixturePath = joinPath(currentDir, 'test/fixtures/nested-packages/nested-package-a');
-    const packagePath = joinPath(currentDir, 'test/fixtures/nested-packages/nested-package-a/package.json');
+    const fixturePath = joinPath(
+      currentDir,
+      'test/fixtures/nested-packages/nested-package-a'
+    );
+    const packagePath = joinPath(
+      currentDir,
+      'test/fixtures/nested-packages/nested-package-a/package.json'
+    );
     assert.equal(await findPackagePath(fixturePath), packagePath);
   });
 });
