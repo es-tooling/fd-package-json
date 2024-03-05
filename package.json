@@ -75,7 +75,6 @@
   "main": "./dist/commonjs/main.js",
   "types": "./dist/commonjs/main.d.ts",
   "dependencies": {
-    "read-package-json-fast": "^3.0.2",
     "walk-up-path": "^3.0.1"
   }
 }
