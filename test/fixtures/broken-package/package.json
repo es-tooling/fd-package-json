@@ -1,0 +1,5 @@
+{
+  "name": "broken-package",
+  "private": true,
+  "version": "1.0.0",
+  "description": "I'm totally missing a closing brace",

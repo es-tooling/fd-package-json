@@ -1,7 +1,6 @@
 import {walkUp} from 'walk-up-path';
 import {resolve} from 'node:path';
-import {stat} from 'node:fs/promises';
-import rpj from 'read-package-json-fast';
+import {stat, readFile} from 'node:fs/promises';
 
 /**
  * Determines if a file exists or not
@@ -51,5 +50,10 @@ export async function findPackage(cwd: string): Promise<Package | null> {
     return null;
   }
 
-  return rpj(packagePath);
+  try {
+    const source = await readFile(packagePath, {encoding: 'utf8'});
+    return JSON.parse(source);
+  } catch (_err) {
+    return null;
+  }
 }

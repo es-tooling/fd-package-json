@@ -61,4 +61,13 @@ test('findPackage', async (t) => {
 
     assert.equal(result!.name, 'simple-package');
   });
+
+  await t.test('null for non-existent packages', async () => {
+    assert.equal(await findPackage('/'), null);
+  });
+
+  await t.test('null for invalid package.json', async () => {
+    const fixturePath = joinPath(currentDir, 'test/fixtures/broken-package');
+    assert.equal(await findPackage(fixturePath), null);
+  });
 });
