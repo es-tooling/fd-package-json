@@ -2,7 +2,12 @@ import assert from 'node:assert';
 import {test} from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {join as joinPath} from 'node:path';
-import {findPackage, findPackagePath} from '../main.js';
+import {
+  findPackage,
+  findPackagePath,
+  findPackageSync,
+  findPackagePathSync
+} from '../main.js';
 
 const currentDir = fileURLToPath(new URL('../../', import.meta.url));
 const rootPackagePath = joinPath(currentDir, 'package.json');
@@ -69,5 +74,25 @@ test('findPackage', async (t) => {
   await t.test('null for invalid package.json', async () => {
     const fixturePath = joinPath(currentDir, 'test/fixtures/broken-package');
     assert.equal(await findPackage(fixturePath), null);
+  });
+});
+
+test('findPackagePathSync', async (t) => {
+  await t.test('finds package in cwd', () => {
+    const fixturePath = joinPath(currentDir, 'test/fixtures/simple-package');
+    const packagePath = joinPath(
+      currentDir,
+      'test/fixtures/simple-package/package.json'
+    );
+    assert.equal(findPackagePathSync(fixturePath), packagePath);
+  });
+});
+
+test('findPackageSync', async (t) => {
+  await t.test('finds package in simple tree', () => {
+    const fixturePath = joinPath(currentDir, 'test/fixtures/simple-package');
+    const result = findPackageSync(fixturePath);
+
+    assert.equal(result!.name, 'simple-package');
   });
 });
