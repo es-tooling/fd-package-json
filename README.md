@@ -32,6 +32,14 @@ parameter:
 await findPackage(process.cwd()); // Returns the JSON of the package if found
 ```
 
+Synchronous methods also exist:
+
+```ts
+findPackageSync(process.cwd()); // returns the package
+
+findPackagePathSync(process.cwd()); // returns the package path
+```
+
 ## License
 
 MIT
