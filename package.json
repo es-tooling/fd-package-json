@@ -3,10 +3,8 @@
   "version": "1.2.0",
   "description": "Utilities for finding the closest package.json file",
   "files": [
-    "dist",
-    "!dist/node_modules",
-    "!dist/cjs/test",
-    "!dist/esm/test"
+    "lib",
+    "!lib/test"
   ],
   "scripts": {
     "clean": "rimraf dist lib",
@@ -15,7 +13,7 @@
     "format": "prettier --write src",
     "lint": "npm run lint:format && eslint src",
     "test": "c8 node --test lib/**/*_test.js",
-    "prepare": "tshy"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -45,35 +43,20 @@
     "eslint-config-google": "^0.14.0",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "tshy": "^1.11.1",
     "typescript": "^5.3.3",
     "typescript-eslint": "^7.1.0"
-  },
-  "tshy": {
-    "exclude": [
-      "src/test"
-    ],
-    "exports": {
-      ".": "./src/main.ts",
-      "./package.json": "./package.json"
-    }
   },
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/esm/main.d.ts",
-        "default": "./dist/esm/main.js"
-      },
-      "require": {
-        "types": "./dist/commonjs/main.d.ts",
-        "default": "./dist/commonjs/main.js"
+        "default": "./lib/main.js"
       }
     },
     "./package.json": "./package.json"
   },
   "type": "module",
-  "main": "./dist/commonjs/main.js",
-  "types": "./dist/commonjs/main.d.ts",
+  "main": "./lib/main.js",
+  "types": "./lib/main.d.ts",
   "dependencies": {
     "walk-up-path": "^3.0.1"
   }
