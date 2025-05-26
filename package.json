@@ -58,6 +58,6 @@
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
   "dependencies": {
-    "walk-up-path": "^3.0.1"
+    "walk-up-path": "^4.0.0"
   }
 }
