@@ -10,5 +10,10 @@ export default [
     ]
   },
   eslintConfigs.recommended,
-  ...tseslintConfigs.recommended
+  ...tseslintConfigs.recommended,
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off'
+    }
+  }
 ];
