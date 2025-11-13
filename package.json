@@ -11,7 +11,7 @@
     "lint:format": "prettier --check src",
     "format": "prettier --write src",
     "lint": "npm run lint:format && eslint src",
-    "test": "c8 node --test lib/**/*_test.js",
+    "test": "tsc && c8 node --test lib/**/*_test.js",
     "prepare": "npm run build"
   },
   "repository": {
