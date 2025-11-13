@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ['./src/main.ts'],
   outDir: './lib',
   format: 'esm',
-  minify: true,
+  minifyIdentifiers: true,
   bundle: true,
   dts: true,
   clean: true
