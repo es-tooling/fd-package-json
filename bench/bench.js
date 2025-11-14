@@ -13,15 +13,15 @@ const depths = [1, 3, 5, 10];
 
 depths.forEach(async (dep) => {
   const name = `${dep} depth${dep === 1 ? '' : 's'}`;
-  const start = join(import.meta.dirname, 'fixture', ...dirs.substring(0, dep));
-  const bench = new Bench({name});
+  const cwd = join(import.meta.dirname, 'fixture', ...dirs.substring(0, dep));
+  const bench = new Bench({name, warmup: true});
 
   bench
-    .add('package-up', async () => await packageUp(start))
-    .add('package-up (sync)', () => packageUpSync(start))
-    .add('empathic (sync)', () => empathic(start))
-    .add('fd-package-json', async () => await findPackagePath(start))
-    .add('fd-package-json (sync)', () => findPackagePathSync(start));
+    .add('package-up', async () => await packageUp({cwd}))
+    .add('package-up (sync)', () => packageUpSync({cwd}))
+    .add('empathic (sync)', () => empathic({cwd}))
+    .add('fd-package-json', async () => await findPackagePath(cwd))
+    .add('fd-package-json (sync)', () => findPackagePathSync(cwd));
 
   await bench.run();
 
