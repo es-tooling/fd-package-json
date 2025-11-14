@@ -5,7 +5,7 @@ import {Bench} from 'tinybench';
 import {join} from 'node:path';
 
 function formatResult(task) {
-  return `${task.name} × ${Math.round(task.result.throughput.mean).toString()} (ops/s) \xb1${task.result.throughput.rme.toFixed(2)}% (${task.result.samples.length} sampled)`;
+  return `${task.name} × ${Math.round(task.result.throughput.mean).toString()} (ops/s) \xb1${task.result.throughput.rme.toFixed(2)}% (${task.result.samples.length} runs sampled)`;
 }
 
 const dirs = 'abcdefghij';
@@ -25,7 +25,7 @@ depths.forEach(async (dep) => {
 
   await bench.run();
 
-  console.log(name);
+  console.log(`# ${name}`);
   bench.tasks.forEach((task) => console.log(formatResult(task)));
   console.log('');
 });
