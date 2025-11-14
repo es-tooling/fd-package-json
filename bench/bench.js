@@ -1,6 +1,6 @@
 import {packageUp, packageUpSync} from 'package-up';
 import {up as empathic} from 'empathic/package';
-import {findPackagePath, findPackagePathSync} from '../lib/main.js';
+import {findPackagePath, findPackagePathSync} from 'fd-package-json';
 import {Bench} from 'tinybench';
 import {join} from 'node:path';
 
