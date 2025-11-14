@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "empathic": "^2.0.0",
+    "package-up": "^5.0.0",
     "tinybench": "^5.1.0"
   }
 }
