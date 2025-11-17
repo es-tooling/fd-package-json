@@ -1,0 +1,11 @@
+{
+  "name": "bench",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "empathic": "^2.0.0",
+    "fd-package-json": "file:../",
+    "package-up": "^5.0.0",
+    "tinybench": "^5.1.0"
+  }
+}
